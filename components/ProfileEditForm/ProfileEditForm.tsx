@@ -85,7 +85,9 @@ export default function ProfileEditForm() {
       {({ isSubmitting, resetForm }) => (
         <Form className={css.form}>
           <div className={css.field}>
-            <label htmlFor="name" className={css.label}>Ім&apos;я</label>
+            <label htmlFor="name" className={css.label}>
+              Ім&apos;я
+            </label>
             <Field
               type="text"
               id="name"
@@ -97,7 +99,9 @@ export default function ProfileEditForm() {
           </div>
 
           <div className={css.field}>
-            <label htmlFor="email" className={css.label}>Пошта</label>
+            <label htmlFor="email" className={css.label}>
+              Пошта
+            </label>
             <Field
               type="email"
               id="email"
@@ -109,7 +113,9 @@ export default function ProfileEditForm() {
           </div>
 
           <div className={css.field}>
-            <label htmlFor="childGender" className={css.label}>Стать дитини</label>
+            <label htmlFor="childGender" className={css.label}>
+              Стать дитини
+            </label>
             <Field
               as="select"
               id="childGender"
@@ -125,7 +131,9 @@ export default function ProfileEditForm() {
           </div>
 
           <div className={css.field}>
-            <label htmlFor="expectedBirthDate" className={css.label}>Планова дата пологів</label>
+            <label htmlFor="expectedBirthDate" className={css.label}>
+              Планова дата пологів
+            </label>
             <Field
               type="date"
               id="expectedBirthDate"
@@ -135,16 +143,22 @@ export default function ProfileEditForm() {
             <ErrorMessage name="expectedBirthDate" component="div" />
           </div>
 
-          <button
-            type="button"
-            className={css.button}
-            onClick={() => resetForm()}
-          >
-            Відмінити зміни
-          </button>
-          <button type="submit" disabled={isSubmitting} className={css.button}>
-            Зберегти зміни
-          </button>
+          <div className={css.buttons_container}>
+            <button
+              type="button"
+              className={css.button_cancel}
+              onClick={() => resetForm()}
+            >
+              Відмінити зміни
+            </button>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={css.button}
+            >
+              Зберегти зміни
+            </button>
+          </div>
         </Form>
       )}
     </Formik>
