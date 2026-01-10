@@ -1,0 +1,29 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  background-color: var(--opacity-neutral-darkest-5);
+  outline: none;
+  border: transparent;
+  height: 40px;
+  border-radius: 12px;
+  padding: 0 12px;
+}
+
+.input::placeholder {
+  color: var(--color-neutral);
+}
+
+.label {
+  margin-bottom: 8px;
+  font-weight: 400;
+  font-size: 16px;
+}
