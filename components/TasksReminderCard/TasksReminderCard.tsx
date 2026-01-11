@@ -29,9 +29,15 @@ const TasksReminderCard = ({
     return groupTasks(tasksResponse.data);
   }, [isSuccess, tasksResponse]);
 
-  const pastSorted = useMemo(() => past.toSorted(sortByDate), [past]);
-  const todaySorted = useMemo(() => today.toSorted(sortByDate), [today]);
-  const futureSorted = useMemo(() => future.toSorted(sortByDate), [future]);
+  const pastSorted = useMemo(() => past.toSorted(sortByDate('desc')), [past]);
+  const todaySorted = useMemo(
+    () => today.toSorted(sortByDate('desc')),
+    [today],
+  );
+  const futureSorted = useMemo(
+    () => future.toSorted(sortByDate('asc')),
+    [future],
+  );
 
   const hasTasks = past.length > 0 || today.length > 0 || future.length > 0;
 

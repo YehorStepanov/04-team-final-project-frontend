@@ -1,6 +1,13 @@
 import { Task, TasksGroup } from '../../../types/task';
 
-export const sortByDate = (a: Task, b: Task) => a.date.localeCompare(b.date);
+type SortOrder = 'asc' | 'desc';
+
+export const sortByDate =
+  (order: SortOrder = 'asc') =>
+  (a: Task, b: Task) => {
+    const comparison = a.date.localeCompare(b.date);
+    return order === 'asc' ? comparison : -comparison;
+  };
 
 export const groupTasks = (tasks: Task[]): TasksGroup => {
   const today = new Date().toISOString().split('T')[0];
