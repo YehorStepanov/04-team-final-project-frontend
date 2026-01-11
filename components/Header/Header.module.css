@@ -9,13 +9,13 @@
 
 @media only screen and (min-width: 768px) {
   .header {
-  height: 68px;
+    height: 68px;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .header {
-  height: 100%;
-  max-width: 312px;
-}
+    height: 100%;
+    max-width: 312px;
+  }
 }
