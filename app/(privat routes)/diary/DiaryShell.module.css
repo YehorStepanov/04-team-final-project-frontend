@@ -1,0 +1,33 @@
+/* desktop: split view */
+.shell {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 16px;
+}
+
+.list {
+  border-right: 1px solid #ddd;
+  padding-right: 16px;
+}
+.details {
+  padding-left: 16px;
+}
+
+/* mobile + tablet: one panel only */
+@media (max-width: 1024px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+  .hideOnMobile {
+    display: none;
+  }
+
+  /* paddings/border  removed for mobile & tablet */
+  .list {
+    border-right: none;
+    padding-right: 0;
+  }
+  .details {
+    padding-left: 0;
+  }
+}
