@@ -37,7 +37,7 @@ const TasksReminderCard = ({
 
   useEffect(() => {
     if (user && isError) {
-      toast.error('Failed to load tasks');
+      toast.error('Не вдалося завантажити завдання');
     }
   }, [isError, user]);
 

@@ -38,10 +38,10 @@ export const useTaskStatusUpdate = (queryClient: QueryClient) => {
       queryClient.invalidateQueries({
         queryKey: ['tasks'],
       });
-      toast.success('Task status updated!');
+      toast.success('Статус завдання успішно оновлено');
     },
     onError() {
-      toast.error('Failed to update task status');
+      toast.error('Не вдалося оновити статус завдання');
     },
   });
 };
