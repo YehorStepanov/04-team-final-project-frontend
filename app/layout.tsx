@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
+import 'modern-normalize';
 import './globals.css';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 import Header from '@/components/Header/Header';
 import { lato, comfortaa } from './fonts';
+import { Toaster } from 'react-hot-toast';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -20,6 +22,12 @@ export default function RootLayout({
         <TanStackProvider>
           <Header />
           {children}
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              duration: 4000,
+            }}
+          />
         </TanStackProvider>
       </body>
     </html>
