@@ -1,9 +1,21 @@
 import Link from 'next/link';
 import styles from './HeaderFooter.module.css';
-
+import { clsx } from 'clsx';
 export default function HeaderFooter() {
-  return <div className={styles.boxFooter}>
-    <Link href="/sign-up" className={styles.signUpLinkFooter}>Зареєстуватись</Link>
-    <Link href="/sign-in" className={styles.signInLinkFooter}>Увійти</Link>
-  </div>;
+  return (
+    <div className={styles.boxFooter}>
+      <ul className={styles.boxFooterList}>
+        <li className={clsx(styles.sign_link_modal)}>
+          <Link className={styles.sign_link} href="/sign-up">
+            Зареєстуватись
+          </Link>
+        </li>
+        <li className={clsx(styles.sign_link_modal)}>
+          <Link className={styles.sign_link} href="/sign-in">
+            Увійти
+          </Link>
+        </li>
+      </ul>
+    </div>
+  );
 }

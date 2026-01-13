@@ -7,6 +7,8 @@ import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
 import { useCallback, useEffect } from 'react';
 
+import HeaderFooter from '../HeaderFooter/HeaderFooter';
+
 interface BurgerMenuProps {
   onClose: () => void;
 }
@@ -41,7 +43,7 @@ export default function BurgerMenu({ onClose }: BurgerMenuProps) {
             <svg className={styles.logo_header} width="105" height="45">
               <use href="#icon-logo"></use>
             </svg>
-            </Link>
+          </Link>
           <button
             onClick={handleClose}
             type="button"
@@ -59,7 +61,11 @@ export default function BurgerMenu({ onClose }: BurgerMenuProps) {
               [styles.active]: pathname === '/',
             })}
           >
-            <Link className={styles.nav_link_modal} href="/" onClick={handleClose}>
+            <Link
+              className={styles.nav_link_modal}
+              href="/"
+              onClick={handleClose}
+            >
               <svg width="24" height="24">
                 <use href="#icon-today"></use>
               </svg>
@@ -71,7 +77,11 @@ export default function BurgerMenu({ onClose }: BurgerMenuProps) {
               [styles.active]: pathname.startsWith('/journey'),
             })}
           >
-            <Link className={styles.nav_link_modal} href="/journey" onClick={handleClose}>
+            <Link
+              className={styles.nav_link_modal}
+              href="/journey"
+              onClick={handleClose}
+            >
               <svg width="24" height="24">
                 <use href="#icon-conversion_path"></use>
               </svg>
@@ -83,7 +93,11 @@ export default function BurgerMenu({ onClose }: BurgerMenuProps) {
               [styles.active]: pathname.startsWith('/diary'),
             })}
           >
-            <Link className={styles.nav_link_modal} href="/diary" onClick={handleClose}>
+            <Link
+              className={styles.nav_link_modal}
+              href="/diary"
+              onClick={handleClose}
+            >
               <svg width="24" height="24">
                 <use href="#icon-book_2"></use>
               </svg>
@@ -95,7 +109,11 @@ export default function BurgerMenu({ onClose }: BurgerMenuProps) {
               [styles.active]: pathname.startsWith('/profile'),
             })}
           >
-            <Link className={styles.nav_link_modal} href="/profile" onClick={handleClose}>
+            <Link
+              className={styles.nav_link_modal}
+              href="/profile"
+              onClick={handleClose}
+            >
               <svg width="24" height="24">
                 <use href="#icon-account_circle"></use>
               </svg>
@@ -103,6 +121,7 @@ export default function BurgerMenu({ onClose }: BurgerMenuProps) {
             </Link>
           </li>
         </ul>
+        <HeaderFooter />
       </nav>
     </div>
   );
