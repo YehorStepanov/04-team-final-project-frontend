@@ -42,7 +42,7 @@ export default function SignIn() {
   ) => {
     try {
       const user = await login(values);
-      console.log(user);
+    
 
       if (user) {
         setUser(user);
@@ -76,7 +76,7 @@ export default function SignIn() {
           onSubmit={handleSubmit}
           validationSchema={OrderFormSchema}
         >
-          {({ errors, touched }) => (
+          {({ errors, touched, isSubmitting }) => (
             <Form className={css.form}>
               <h1 className={css.formTitle}>Вхід</h1>
 
@@ -88,7 +88,8 @@ export default function SignIn() {
                   className={`${css.input} ${
                     errors.email && touched.email ? css.inputError : ''
                   }`}
-              
+
+
                   placeholder="Пошта"
                 />
                 <ErrorMessage
@@ -101,12 +102,12 @@ export default function SignIn() {
               <div className={css.formGroup}>
                 <Field
                   id="password"
-                 
+
                   name="password"
                   className={`${css.input} ${
                     errors.password && touched.password ? css.inputError : ''
                   }`}
-             
+
                   placeholder="Пароль"
                 />
                 <ErrorMessage
@@ -116,7 +117,7 @@ export default function SignIn() {
                 />
               </div>
               <div className={css.actions}>
-                <button type="submit" className={css.submitButton}>
+                <button type="submit" className={css.submitButton} disabled={isSubmitting}>
                   Увійти
                 </button>
               </div>
