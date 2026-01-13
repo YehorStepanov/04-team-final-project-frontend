@@ -19,7 +19,7 @@ export interface Baby {
   babySize: number;
   babyWeight: number;
   babyActivity: string;
-  development: string;
+  babyDevelopment: string;
   interestingFact: string;
   image: string;
 }
