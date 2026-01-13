@@ -25,8 +25,6 @@ function JourneyPageClient({ weekNumber }: Props) {
   return (
     <div className={css.page}>
       <WeekSelector currentWeek={currentWeek} weekNumber={weekNumber} />
-
-      {/* <JourneyDetails weekNumber={weekNumber} /> */}
       {data && <JourneyDetails data={data} />}
     </div>
   );

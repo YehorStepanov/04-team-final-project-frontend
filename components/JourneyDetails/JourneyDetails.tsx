@@ -4,18 +4,15 @@ import { useState } from 'react';
 import css from './JourneyDetails.module.css';
 import clsx from 'clsx';
 import Image from 'next/image';
-// import { useQuery } from '@tanstack/react-query';
 
-// export default function JourneyDetails({ weekNumber }: { weekNumber: number }) {
-// export default function JourneyDetails({ weekNumber }: { weekNumber: number }) {
+const CATEGORY_ICONS: Record<string, string> = {
+  Харчування: 'fork_spoon',
+  Активність: 'fitness_center',
+  Відпочинок: 'chair',
+};
+
 export default function JourneyDetails({ data }: { data: PregnancyWeek }) {
   const [selectedTab, setSelectedTab] = useState(0);
-
-  // const { data, isLoading, error } = useQuery<PregnancyWeek>({
-  //   queryKey: ['journey', weekNumber],
-  //   queryFn: () => fetchDataByWeekNumber(weekNumber),
-  //   refetchOnMount: false,
-  // });
 
   return (
     <>
@@ -37,29 +34,31 @@ export default function JourneyDetails({ data }: { data: PregnancyWeek }) {
             </button>
           </div>
 
-          {selectedTab === 0 && data ? (
+          {selectedTab === 0 ? (
             /* Розвиток малюка */
             <div className={css.babyContent}>
               <div className={css.babyContentLeft}>
                 <div className={css.babyImageWrapper}>
                   <Image
-                    src={`${data.baby.image}`}
+                    src={data.baby.image}
                     alt="Baby Size Association Image"
                     className={css.babyImage}
                     width={300}
                     height={300}
                   />
                 </div>
-                <p className={css.babyAnalogy}>
-                  Ваш малюк розміром як {data.baby.analogy}
-                </p>
+                {data.baby.analogy && (
+                  <p className={css.babyAnalogy}>
+                    Ваш малюк розміром як {data.baby.analogy}
+                  </p>
+                )}
               </div>
               <div className={css.babyJourneyInfo}>
                 <div className={css.babyActivityDevelopment}>
-                  <p className={css.babyActivityDevelopment}>
+                  <p className={css.babyActivityDevelopmentText}>
                     {data.baby.babyActivity}
                   </p>
-                  <p className={css.babyActivityDevelopment}>
+                  <p className={css.babyActivityDevelopmentText}>
                     {data.baby.babyDevelopment}
                   </p>
                 </div>
@@ -87,14 +86,14 @@ export default function JourneyDetails({ data }: { data: PregnancyWeek }) {
                 <div className={css.fillingsBlock}>
                   <h3 className={css.feelingsTitle}>Як ви можете почуватись</h3>
                   <ul className={css.feelingsList}>
-                    {data?.mom.feelings.states.map((state, index) => (
-                      <li key={index} className={css.fillingsItem}>
+                    {data.mom.feelings.states.map((state, index) => (
+                      <li key={`${state}-${index}`} className={css.fillingsItem}>
                         {state}
                       </li>
                     ))}
                   </ul>
                   <p className={css.sensationDescription}>
-                    {data?.mom.feelings.sensationDescr}
+                    {data.mom.feelings.sensationDescr}
                   </p>
                 </div>
                 <div className={css.comfortBlock}>
@@ -102,7 +101,7 @@ export default function JourneyDetails({ data }: { data: PregnancyWeek }) {
                     Поради для вашого комфорту
                   </h3>
                   <ul className={css.comfortList}>
-                    {data?.mom.comfortTips.map((tip) => (
+                    {data.mom.comfortTips.map((tip) => (
                       <li key={tip._id} className={css.adviceComfortItem}>
                         <div className={css.adviceComfortTitle}>
                           <svg
@@ -110,23 +109,20 @@ export default function JourneyDetails({ data }: { data: PregnancyWeek }) {
                             width="24"
                             height="24"
                           >
-                            <use href="./img/journey/journey-sprite.svg#fork_spoon"></use>
+                            <use
+                              href={`/img/journey/journey-sprite.svg#${CATEGORY_ICONS[tip.category]}`}
+                            ></use>
                           </svg>
                           <h5>{tip.category}</h5>
                         </div>
-                        <p>{tip.tip}</p>
+                        <p className={css.adviceComfortContent}>{tip.tip}</p>
                       </li>
                     ))}
                   </ul>
                 </div>
               </div>
               <div className={css.tasksComponent}>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
-                  recusandae asperiores aut ut consectetur dolores consequuntur
-                  iure temporibus ducimus dolor voluptas voluptates numquam
-                  quam, reprehenderit labore sequi esse quaerat non.
-                </p>
+                {/* Tasks component content to be implemented */}
               </div>
             </div>
           )}

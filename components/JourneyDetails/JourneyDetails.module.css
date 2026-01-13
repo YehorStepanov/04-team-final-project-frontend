@@ -118,6 +118,12 @@ body {
   background: var(--color-scheme-foreground);
 }
 
+.babyContentLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .babyImageWrapper {
   margin-bottom: 16px;
   overflow: hidden;
@@ -219,6 +225,7 @@ body {
 }
 
 .feelingsList {
+  padding-left: 0;
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
@@ -226,9 +233,11 @@ body {
 }
 
 .feelingsTitle {
+  margin: 0 0 8px 0;
 }
 
 .fillingsItem {
+  list-style: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -236,6 +245,30 @@ body {
   border-radius: 100px;
   padding: 4px 10px;
   background: var(--opacity-neutral-darkest-5);
+}
+
+.sensationDescription {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--color-scheme-text);
+  margin: 0;
+}
+
+.comfortList {
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.adviceComfortItem {
+  list-style: none;
+}
+
+.adviceComfortContent {
+  margin: 0;
 }
 
 .tasksComponent {
