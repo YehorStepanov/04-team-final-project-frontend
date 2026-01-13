@@ -88,7 +88,8 @@ export default function SignIn() {
                   className={`${css.input} ${
                     errors.email && touched.email ? css.inputError : ''
                   }`}
-     
+
+
                   placeholder="Пошта"
                 />
                 <ErrorMessage
@@ -101,12 +102,12 @@ export default function SignIn() {
               <div className={css.formGroup}>
                 <Field
                   id="password"
-                
+
                   name="password"
                   className={`${css.input} ${
                     errors.password && touched.password ? css.inputError : ''
                   }`}
-                 
+
                   placeholder="Пароль"
                 />
                 <ErrorMessage
