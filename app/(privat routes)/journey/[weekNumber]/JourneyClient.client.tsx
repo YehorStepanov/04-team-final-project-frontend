@@ -5,7 +5,6 @@ import { PregnancyWeek } from '@/types/week';
 import WeekSelector from '@/components/WeekSelector/WeekSelector';
 import css from './JourneyClient.module.css';
 import { fetchWeekClient } from '@/lib/api/clientApi';
-import Image from 'next/image';
 import JourneyDetails from '@/components/JourneyDetails/JourneyDetails';
 
 interface Props {
