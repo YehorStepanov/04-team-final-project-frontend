@@ -42,7 +42,7 @@ export default function SignIn() {
   ) => {
     try {
       const user = await login(values);
-      console.log(user);
+    
 
       if (user) {
         setUser(user);
