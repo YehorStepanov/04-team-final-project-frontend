@@ -3,7 +3,6 @@ export function logErrorResponse(errorObj: unknown): void {
   const yellow = '\x1b[33m';
   const reset = '\x1b[0m';
 
-  // Стрелка зелёная, текст жёлтый
   console.log(`${green}> ${yellow}Error Response Data:${reset}`);
   console.dir(errorObj, { depth: null, colors: true });
 }

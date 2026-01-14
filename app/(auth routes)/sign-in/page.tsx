@@ -42,7 +42,6 @@ export default function SignIn() {
   ) => {
     try {
       const user = await login(values);
-    
 
       if (user) {
         setUser(user);
@@ -83,13 +82,10 @@ export default function SignIn() {
               <div className={css.formGroup}>
                 <Field
                   id="email"
-               
                   name="email"
                   className={`${css.input} ${
                     errors.email && touched.email ? css.inputError : ''
                   }`}
-
-
                   placeholder="Пошта"
                 />
                 <ErrorMessage
@@ -102,12 +98,10 @@ export default function SignIn() {
               <div className={css.formGroup}>
                 <Field
                   id="password"
-
                   name="password"
                   className={`${css.input} ${
                     errors.password && touched.password ? css.inputError : ''
                   }`}
-
                   placeholder="Пароль"
                 />
                 <ErrorMessage
@@ -117,7 +111,11 @@ export default function SignIn() {
                 />
               </div>
               <div className={css.actions}>
-                <button type="submit" className={css.submitButton} disabled={isSubmitting}>
+                <button
+                  type="submit"
+                  className={css.submitButton}
+                  disabled={isSubmitting}
+                >
                   Увійти
                 </button>
               </div>
