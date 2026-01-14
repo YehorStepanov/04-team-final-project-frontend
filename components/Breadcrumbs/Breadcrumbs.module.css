@@ -1,0 +1,58 @@
+.breadcrumb {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+
+  display: flex;
+  gap: 0;
+  flex-wrap: nowrap;
+}
+
+.breadcrumb ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumb li {
+  display: flex;
+  align-items: center;
+}
+
+/* Роздільник ">" */
+.breadcrumb li::after {
+  content: '>';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  margin: 0 8px;
+  color: rgba(0, 0, 0, 1);
+}
+
+.breadcrumb li:last-child::after {
+  content: '';
+}
+
+/* Посилання */
+.breadcrumb a {
+  color: rgba(0, 0, 0, 1);
+  text-decoration: none;
+}
+
+/* Поточний елемент */
+.breadcrumb span {
+  color: rgba(127, 127, 127, 1);
+}
+
+
+@media only screen and (min-width: 1440px) {
+  .breadcrumb {
+    font-size: 14px;
+  }
+}
