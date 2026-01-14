@@ -29,9 +29,15 @@ interface FormValues {
 
 export default function ProfileEditForm() {
   const { user, setUser } = useAuthStore();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingData, setIsLoadingData] = useState(true);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if ( user) {
+      setIsLoadingData(false);
+    }
+  }, [ user]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -41,16 +47,14 @@ export default function ProfileEditForm() {
       } catch (error) {
         console.error('Error fetching user:', error);
       } finally {
-        setIsLoading(false);
+        setIsLoadingData(false);
       }
     };
 
     if (!user) {
       fetchUser();
-    } else {
-      setIsLoading(false);
     }
-  }, [user, setUser]);
+  }, [ user, setUser]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -97,10 +101,6 @@ export default function ProfileEditForm() {
     }
   };
 
-  if (isLoading) {
-    return <div>Завантаження...</div>;
-  }
-
   return (
     <Formik
       initialValues={initialValues}
@@ -120,6 +120,7 @@ export default function ProfileEditForm() {
               name="name"
               placeholder="Ганна"
               className={css.input}
+              disabled={isLoadingData}
             />
             <ErrorMessage name="name" component="div" className={css.error} />
           </div>
@@ -134,6 +135,7 @@ export default function ProfileEditForm() {
               name="email"
               placeholder="example@example.com"
               className={css.input}
+              disabled={isLoadingData}
             />
             <ErrorMessage name="email" component="div" className={css.error} />
           </div>
@@ -144,14 +146,20 @@ export default function ProfileEditForm() {
             </label>
             <div className={css.selectWrapper} ref={selectRef}>
               <div
-                className={`${css.select} ${isSelectOpen ? css.selectOpen : ''}`}
-                onClick={() => setIsSelectOpen(!isSelectOpen)}
+                className={`${css.select} ${isSelectOpen ? css.selectOpen : ''} ${isLoadingData ? css.selectDisabled : ''}`}
+                onClick={() => !isLoadingData && setIsSelectOpen(!isSelectOpen)}
               >
                 <span className={css.selectValue}>
-                  {values.childGender === 'neutral' && 'Не визначено'}
-                  {values.childGender === 'male' && 'Хлопчик'}
-                  {values.childGender === 'female' && 'Дівчинка'}
-                  {!values.childGender && 'Оберіть стать'}
+                  {isLoadingData ? (
+                    'Завантаження...'
+                  ) : (
+                    <>
+                      {values.childGender === 'neutral' && 'Не визначено'}
+                      {values.childGender === 'male' && 'Хлопчик'}
+                      {values.childGender === 'female' && 'Дівчинка'}
+                      {!values.childGender && 'Оберіть стать'}
+                    </>
+                  )}
                 </span>
                 <span
                   className={`${css.arrow} ${isSelectOpen ? css.arrowOpen : ''}`}
@@ -159,7 +167,7 @@ export default function ProfileEditForm() {
                   ▼
                 </span>
               </div>
-              {isSelectOpen && (
+              {isSelectOpen && !isLoadingData && (
                 <div className={css.optionsList}>
                   <div
                     className={css.option}
@@ -207,6 +215,7 @@ export default function ProfileEditForm() {
               id="dueDate"
               name="dueDate"
               className={css.dateInput}
+              disabled={isLoadingData}
             />
             <ErrorMessage
               name="dueDate"
@@ -220,12 +229,13 @@ export default function ProfileEditForm() {
               type="button"
               className={css.button}
               onClick={() => resetForm()}
+              disabled={isLoadingData}
             >
               Відмінити зміни
             </button>
             <button
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || isLoadingData}
               className={css.button + ' ' + css.button_save}
             >
               Зберегти зміни
