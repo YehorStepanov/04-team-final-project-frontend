@@ -7,3 +7,7 @@ export interface User {
   theme: string;
   dueDate: string;
 }
+export interface LoginData {
+  email: string;
+  password: string;
+}

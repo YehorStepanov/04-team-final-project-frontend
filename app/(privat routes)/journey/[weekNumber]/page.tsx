@@ -4,8 +4,7 @@ import {
   QueryClient,
 } from '@tanstack/react-query';
 
-import { fetchDataByWeekNumber } from '@/lib/api/serverApi';
-import axios from 'axios';
+import { fetchWeekServer } from '@/lib/api/serverApi';
 import JourneyPageClient from './JourneyClient.client';
 
 type Props = {
@@ -13,23 +12,14 @@ type Props = {
 };
 
 async function JourneyPage({ params }: Props) {
-  await axios.post(
-    'https://zero4-team-final-project-backend.onrender.com/api/auth/login',
-    {
-      email: 'testmax@mail.com',
-      password: '12345678',
-    },
-    { withCredentials: true },
-  );
-
-  const resolvedParams = await params; // 👈 розгортаємо Promise
+  const resolvedParams = await params;
   const weekNumber = Number(resolvedParams.weekNumber);
 
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
     queryKey: ['week', weekNumber],
-    queryFn: () => fetchDataByWeekNumber(weekNumber),
+    queryFn: () => fetchWeekServer(weekNumber),
   });
 
   return (

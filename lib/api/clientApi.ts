@@ -1,5 +1,7 @@
 import { Task, TaskStatus } from '@/types/task';
 import { api } from './api';
+import { PregnancyWeek } from '@/types/week';
+import { LoginData, User } from '@/types/user';
 
 //* Tasks =================================================
 export interface FetchTasksResponse {
@@ -24,4 +26,18 @@ export const updateTaskStatus = async ({
     isDone: checked,
   });
   return response.data;
+};
+
+export async function fetchWeekClient(
+  weekNumber: number,
+): Promise<PregnancyWeek> {
+  const { data } = await api.get(`/weeks/${weekNumber}`, {
+    withCredentials: true,
+  });
+  return data;
+}
+
+export const login = async (loginData: LoginData) => {
+  const { data } = await api.post<User>(`/auth/login`, loginData);
+  return data;
 };
