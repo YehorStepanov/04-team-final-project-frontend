@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { clsx } from 'clsx';
 import HeaderFooter from '../HeaderFooter/HeaderFooter';
+
 export default function Header() {
   const pathname = usePathname();
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -15,80 +16,92 @@ export default function Header() {
     <>
       <header className={styles.header}>
         <nav className={styles.navigator_header}>
+          {/* LOGO */}
           <Link className={styles.logo_link} href="/">
             <svg className={styles.logo_header} width="105" height="45">
-              <use href="#icon-logo"></use>
+              <use href="#icon-logo" />
             </svg>
           </Link>
-          <div>
-            <ul className={styles.desktop_nav}>
-              <li
-                className={clsx(styles.nav_item, {
-                  [styles.active]: pathname === '/',
-                })}
-              >
-                <Link className={styles.nav_link_modal} href="/">
-                  <svg width="24" height="24">
-                    <use href="#icon-today"></use>
-                  </svg>
-                  Мій день
-                </Link>
-              </li>
-              <li
-                className={clsx(styles.nav_item, {
-                  [styles.active]: pathname.startsWith('/journey'),
-                })}
-              >
-                <Link className={styles.nav_link_modal} href="/journey">
-                  <svg width="24" height="24">
-                    <use href="#icon-conversion_path"></use>
-                  </svg>
-                  Подорож
-                </Link>
-              </li>
-              <li
-                className={clsx(styles.nav_item, {
-                  [styles.active]: pathname.startsWith('/diary'),
-                })}
-              >
-                <Link className={styles.nav_link_modal} href="/diary">
-                  <svg width="24" height="24">
-                    <use href="#icon-book_2"></use>
-                  </svg>
-                  Щоденник
-                </Link>
-              </li>
-              <li
-                className={clsx(styles.nav_item, {
-                  [styles.active]: pathname.startsWith('/profile'),
-                })}
-              >
-                <Link className={styles.nav_link_modal} href="/profile">
-                  <svg width="24" height="24">
-                    <use href="#icon-account_circle"></use>
-                  </svg>
-                  Профіль
-                </Link>
-              </li>
-              <li>
-                <HeaderFooter />
-              </li>
-            </ul>
+
+          {/* NAV */}
+          <ul className={styles.desktop_nav}>
+            <li
+              className={clsx(
+                styles.nav_item,
+                pathname === '/' && styles.active,
+              )}
+            >
+              <Link className={styles.nav_link} href="/">
+                <svg width="24" height="24">
+                  <use href="#icon-today" />
+                </svg>
+                Мій день
+              </Link>
+            </li>
+
+            <li
+              className={clsx(
+                styles.nav_item,
+                pathname.startsWith('/journey') && styles.active,
+              )}
+            >
+              <Link className={styles.nav_link} href="/journey">
+                <svg width="24" height="24">
+                  <use href="#icon-conversion_path" />
+                </svg>
+                Подорож
+              </Link>
+            </li>
+
+            <li
+              className={clsx(
+                styles.nav_item,
+                pathname.startsWith('/diary') && styles.active,
+              )}
+            >
+              <Link className={styles.nav_link} href="/diary">
+                <svg width="24" height="24">
+                  <use href="#icon-book_2" />
+                </svg>
+                Щоденник
+              </Link>
+            </li>
+
+            <li
+              className={clsx(
+                styles.nav_item,
+                pathname.startsWith('/profile') && styles.active,
+              )}
+            >
+              <Link className={styles.nav_link} href="/profile">
+                <svg width="24" height="24">
+                  <use href="#icon-account_circle" />
+                </svg>
+                Профіль
+              </Link>
+            </li>
+          </ul>
+
+          {/* FOOTER — ВНИЗ */}
+          <div className={styles.footer}>
+            <HeaderFooter />
           </div>
+
+          {/* MOBILE */}
           <div className={styles.menu_box}>
             <button
-              onClick={() => setIsOpenModal((isOpenModal) => !isOpenModal)}
-              type="button"
+              onClick={() => setIsOpenModal((v) => !v)}
               className={styles.menu_mobile}
-              aria-label="menu button"
+              aria-label="menu"
             >
               <svg width="32" height="32">
-                <use href="#icon-menu"></use>
+                <use href="#icon-menu" />
               </svg>
             </button>
           </div>
         </nav>
       </header>
+
       {isOpenModal && <BurgerMenu onClose={() => setIsOpenModal(false)} />}
     </>
   );
