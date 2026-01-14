@@ -49,7 +49,9 @@ export default function SignUpForm() {
     actions: FormikHelpers<SignUpFormValues>,
   ) => {
     try {
+      toast.info('Регистрация...');
       await register(values);
+      toast.info('регистрация успешна!');
       actions.resetForm();
       router.push('/profile/edit');
     } catch (error: unknown) {
