@@ -3,6 +3,7 @@ import './globals.css';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 import { lato, comfortaa } from './fonts';
 import Sprite from '@/public/img/header/sprite';
+import Toaster from '@/components/Toaster/Toaster';
 
 export const metadata: Metadata = {
   title: 'Leleka',
@@ -21,6 +22,7 @@ export default function RootLayout({
           <Sprite />
 
           {children}
+          <Toaster />
         </TanStackProvider>
       </body>
     </html>

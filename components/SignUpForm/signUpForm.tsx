@@ -66,16 +66,15 @@ export default function SignUpForm() {
 
   return (
     <main className={css.mainContent}>
-      <Link className={css.logo} href="/">
-        <svg className="logo-icon" width="30" height="30">
-          <use href="/img/logo/sprite.svg#icon-logo"></use>
-        </svg>
-        <svg className="stork-icon" width="61" height="13">
-          <use href="/img/logo/sprite.svg#icon-stork"></use>
-        </svg>
-      </Link>
-
       <div className={css.content}>
+        <Link className={css.logo} href="/">
+          <svg className="logo-icon" width="30" height="30">
+            <use href="/img/logo/sprite.svg#icon-logo"></use>
+          </svg>
+          <svg className="stork-icon" width="61" height="13">
+            <use href="/img/logo/sprite.svg#icon-stork"></use>
+          </svg>
+        </Link>
         <Formik
           initialValues={initialValues}
           validationSchema={SignUpFormSchema}
