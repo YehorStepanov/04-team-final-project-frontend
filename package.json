@@ -14,14 +14,13 @@
     "clsx": "^2.1.1",
     "cookie": "^1.1.1",
     "formik": "^2.4.9",
-
+    "modern-normalize": "^3.0.1",
     "izitoast": "^1.4.0",
-
     "framer-motion": "^12.25.0",
-
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "react-hot-toast": "^2.6.0",
     "react-paginate": "^8.3.0",
     "tough-cookie": "^6.0.0",
     "use-debounce": "^10.0.6",

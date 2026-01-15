@@ -1,0 +1,27 @@
+.btnPrimary {
+  color: var(--color-scheme-text);
+  background-color: var(--color-scheme-foreground-alt);
+  border-bottom: 4px solid var(--color-scheme-accent);
+  border-radius: 100px;
+
+  transition:
+    background-color var(--transition-base),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btnPrimary:hover,
+.btnPrimary:focus {
+  background-color: var(--color-scheme-background);
+  border-bottom: 4px solid var(--color-scheme-border);
+}
+
+.btnPrimary:active {
+  background-color: var(--color-neutral-light);
+  border: none;
+}
+
+.btnPrimary:disabled {
+  background-color: var(--color-scheme-foreground-alt);
+  opacity: 0.3;
+  border-bottom: 4px solid var(--color-scheme-accent);
+}

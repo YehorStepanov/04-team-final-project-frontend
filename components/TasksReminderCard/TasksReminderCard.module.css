@@ -1,0 +1,194 @@
+.tasksCard {
+  margin: 0 auto;
+  padding: 24px;
+  width: 100%;
+  min-width: 311px;
+  max-width: 335px;
+  min-height: 688px;
+  background: var(--color-scheme-foreground);
+  border: 0px solid var(--color-scheme-border);
+  border-radius: 32px;
+}
+
+.tasksCard.dashboardPage {
+  min-height: 688px;
+}
+
+.tasksCard.journeyPage {
+  min-height: 705px;
+}
+
+.tasksCard:has(.tasksLists.empty) {
+  min-height: 209px;
+}
+
+.tasksCardHeader {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tasksCardTitle {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: var(--color-scheme-text);
+}
+
+.tasksCardAddBtn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tasksCardAddBtn:hover svg {
+  fill: var(--color-red);
+}
+
+.tasksList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tasksLists {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 584px;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+.tasksLists::-webkit-scrollbar {
+  width: 10px;
+}
+
+.tasksLists::-webkit-scrollbar-track {
+  background-color: var(--opacity-neutral-darkest-20);
+  border: 2px solid var(--color-scheme-foreground);
+  border-radius: 8px;
+}
+
+.tasksLists::-webkit-scrollbar-thumb {
+  background-color: var(--color-scheme-accent);
+  border: 2px solid var(--color-scheme-accent);
+  border-radius: 8px;
+}
+.tasksLists::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-scheme-foreground-alt);
+}
+
+.tasksCard.dashboardPage:has(.tasksLists.empty),
+.tasksCard.journeyPage:has(.tasksLists.empty) {
+  height: 209px;
+}
+
+.tasksListTitle,
+.tasksListCreateTitle {
+  margin-bottom: 4px;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-scheme-text);
+}
+
+.tasksListCreateText {
+  margin-bottom: 16px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-scheme-text);
+}
+
+.tasksListCreateBtn {
+  min-width: 173px;
+  height: 42px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-scheme-text);
+}
+
+.taskDate {
+  margin-left: 26px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 0.625rem;
+  line-height: 1.6;
+  color: var(--color-neutral-darkest);
+}
+
+.taskItem {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .tasksCard.dashboardPage,
+  .tasksCard.journeyPage {
+    width: 100%;
+    max-width: 704px;
+    min-height: 671px;
+  }
+
+  .tasksLists {
+    height: 567px;
+  }
+
+  .tasksListCreateBtn {
+    min-width: 173px;
+  }
+  .tasksListCreateTitle,
+  .tasksListCreateText,
+  .tasksListCreateBtn {
+    font-size: 0.875rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .tasksCard.dashboardPage,
+  .tasksCard.journeyPage {
+    padding: 24px 24px 16px;
+    width: 100%;
+    max-width: 390px;
+    min-height: 499px;
+  }
+
+  .tasksCardTitle {
+    font-size: 1.5rem;
+  }
+
+  .tasksLists {
+    height: 403px;
+  }
+
+  .tasksCard.dashboardPage:has(.tasksLists.empty),
+  .tasksCard.journeyPage:has(.tasksLists.empty) {
+    height: 499px;
+  }
+
+  .taskDate {
+    font-size: 0.75rem;
+  }
+
+  .tasksListCreateBtn {
+    min-width: 191px;
+    height: 46px;
+  }
+
+  .tasksListTitle,
+  .tasksListCreateTitle,
+  .tasksListCreateText,
+  .tasksListCreateBtn {
+    font-size: 1rem;
+  }
+}

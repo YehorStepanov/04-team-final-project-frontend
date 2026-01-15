@@ -59,19 +59,78 @@
   --second-family: 'Comfortaa', sans-serif;
 }
 
-body {
-  margin: 0;
-  padding: 0;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
+
+html {
+  font-size: 16px;
+}
+
+/* Reset */
 ul,
 ol {
-  list-style: none;
+  margin: 0;
   padding: 0;
+  list-style-type: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
 }
 
 a {
   text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+input,
+textarea {
+  outline: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input:checked {
+  outline: none;
+  border: none;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
   cursor: pointer;
+}
+
+button:hover,
+button:focus {
+  border: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
