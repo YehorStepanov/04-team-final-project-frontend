@@ -1,15 +1,9 @@
+import { api } from '@/app/api/api';
 import { PregnancyWeek } from '@/types/week';
-import { api } from './api';
 
-export async function fetchDataByWeekNumber(
+export async function fetchWeekServer(
   weekNumber: number,
 ): Promise<PregnancyWeek> {
-  // noteId: string,
-  // cookie: string,
-  const { data } = await api.get(`/weeks`, {
-    params: { week: weekNumber },
-    withCredentials: true,
-  });
-
+  const { data } = await api.get(`/weeks/${weekNumber}`);
   return data;
 }

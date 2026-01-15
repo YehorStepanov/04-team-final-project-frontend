@@ -23,6 +23,7 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-paginate": "^8.3.0",
+    "tough-cookie": "^6.0.0",
     "use-debounce": "^10.0.6",
     "yup": "^1.7.1",
     "zustand": "^5.0.9"
