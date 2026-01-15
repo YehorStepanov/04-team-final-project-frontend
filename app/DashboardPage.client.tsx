@@ -6,8 +6,9 @@ import MomTipCard from '@/components/MomTipCard/MomTipCard';
 import StatusBlock from '@/components/StatusBlock/StatusBlock';
 import { fetchWeek } from '@/lib/api/api';
 import { useQuery } from '@tanstack/react-query';
-import css from './DashBoardPage.module.css';
+import css from './DashboardPage.module.css';
 import FeelingCheckCard from '@/components/FeelingCheckCard/FeelingCheckCard';
+import TasksReminderCard from '@/components/TasksReminderCard/TasksReminderCard';
 
 function DashboardPageClient() {
   const { data, isError, isLoading } = useQuery({
@@ -31,8 +32,7 @@ function DashboardPageClient() {
           <MomTipCard mom={data.mom} />
         </div>
         <div className={css.secondBlock}>
-          {/* Поки що заглушка для компонента TasksReminderCard */}
-          <div className={css.zaglushka}></div>
+          <TasksReminderCard />
           <FeelingCheckCard />
         </div>
       </div>
