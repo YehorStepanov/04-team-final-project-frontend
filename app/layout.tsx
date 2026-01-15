@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
-import './reset.css';
+import 'modern-normalize';
 import './globals.css';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 import { lato, comfortaa } from './fonts';
+import { Toaster } from 'react-hot-toast';
 import Sprite from '@/public/img/header/sprite';
 
 export const metadata: Metadata = {
@@ -21,6 +22,12 @@ export default function RootLayout({
         <TanStackProvider>
           <Sprite />
           {children}
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              duration: 4000,
+            }}
+          />
         </TanStackProvider>
       </body>
     </html>
