@@ -6,11 +6,12 @@ import { useAuthStore } from '@/lib/store/authStore';
 import Link from 'next/link';
 import Image from 'next/image';
 import * as Yup from 'yup';
-import 'izitoast/dist/css/iziToast.min.css';
+// import 'izitoast/dist/css/iziToast.min.css';
 import { AxiosError } from 'axios';
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik';
 import { login } from '@/lib/api/clientApi';
 import iziToast from 'izitoast';
+// import iziToast from 'izitoast';
 
 interface OrderFormValues {
   email: string;
