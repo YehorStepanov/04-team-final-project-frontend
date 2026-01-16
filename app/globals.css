@@ -59,6 +59,29 @@
   --second-family: 'Comfortaa', sans-serif;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root[data-theme='pink'] {
+  --color-scheme-foreground: var(--color-pastel-pink-lighter);
+  --color-scheme-accent: var(--color-pastel-pink);
+  --color-scheme-foreground-alt: var(--color-pastel-pink-light);
+}
+
+:root[data-theme='blue'] {
+  --color-scheme-foreground: var(--color-french-pass-lighter);
+  --color-scheme-accent: var(--color-french-pass);
+  --color-scheme-foreground-alt: var(--color-french-pass-light);
+}
+
+:root[data-theme='neutral'] {
+  --color-scheme-foreground: var(--color-oasis-lighter);
+  --color-scheme-accent: var(--color-oasis);
+  --color-scheme-foreground-alt: var(--color-oasis-light);
+=======
 *,
 *::before,
 *::after {

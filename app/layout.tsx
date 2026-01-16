@@ -5,7 +5,8 @@ import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 import { lato, comfortaa } from './fonts';
 import { Toaster } from 'react-hot-toast';
 import Sprite from '@/public/img/header/sprite';
-
+import Toaster from '@/components/Toaster/Toaster';
+import '@/lib/validation/yup';
 export const metadata: Metadata = {
   title: 'Leleka',
   description: 'Site for moms and dads about pregnancy',

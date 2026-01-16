@@ -3,7 +3,6 @@
   margin-left: auto;
   margin-right: auto;
 }
-
 .content {
   min-height: calc(100vh - 72px);
   display: flex;
@@ -24,7 +23,6 @@
 .stork-icon {
   display: block;
 }
-
 .formTitle {
   font-family: var(--second-family);
   font-weight: 700;
@@ -38,18 +36,17 @@
   margin-bottom: 32px;
 }
 .formGroup {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
 }
-
-.error {
-  position: absolute;
-  top: 38px;
-  left: 0;
+.label {
+  margin: 0 0 8px 0;
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 12px;
-  line-height: 160%;
-  color: var(--color-red);
+  font-size: 14px;
+  line-height: 150%;
+  color: var(--color-scheme-text);
 }
 .input {
   border: 2px solid var(--opacity-transparent);
@@ -58,11 +55,16 @@
   width: 311px;
   height: 21px;
   background: var(--opacity-neutral-darkest-5);
-  margin-bottom: 16px;
   outline: none;
   transition: border-color 0.2s ease;
 }
-
+.error {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 160%;
+  color: var(--color-red);
+}
 .input:focus,
 .input:hover {
   border: 2px solid var(--color-scheme-accent);
@@ -143,7 +145,6 @@
 .img {
   display: none;
 }
-
 @media screen and (min-width: 768px) {
   .mainContent {
     max-width: 704px;
@@ -164,15 +165,30 @@
     max-width: 1440px;
     display: flex;
     position: relative;
+    /* изменения: */
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
   }
 
   .logo {
     position: absolute;
     left: 69px;
+    top: 22px;
+    /* изменения: */
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: -411px; /* смещаю вверх, чтобы было над формой НА ГЛАЗ!!!*/
   }
   .content {
     min-height: 900px;
     width: 720px;
+    /* изменения: */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
   }
 
   .formTitle {
