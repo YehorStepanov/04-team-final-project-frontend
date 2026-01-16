@@ -3,6 +3,7 @@
     background-color: var(--color-scheme-foreground);
     border-radius: 32px;
     flex: 1;
+    margin-top: 68px;
 }
 
 .newItemButton {
@@ -56,6 +57,7 @@
     .container {
         max-width: 389px;
         height: 727px;
+        margin-top: 0;
     }
 
     .listTitle {

@@ -1,0 +1,17 @@
+.container {
+    margin: 0 16px;
+    height: 97px;
+    background-color: var(--color-scheme-foreground-alt);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    color: var(--color-scheme-text);
+}
