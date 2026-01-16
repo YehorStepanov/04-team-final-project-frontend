@@ -9,11 +9,15 @@ import { useCallback, useEffect } from 'react';
 
 import HeaderFooter from '../HeaderFooter/HeaderFooter';
 
+import { useAuthStore } from '@/lib/store/authStore';
+
 interface BurgerMenuProps {
   onClose: () => void;
 }
 
 export default function BurgerMenu({ onClose }: BurgerMenuProps) {
+  const user = useAuthStore((state) => state.user);
+
   const pathname = usePathname();
 
   const handleClose = useCallback(() => {
