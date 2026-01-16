@@ -6,11 +6,12 @@ import { useAuthStore } from '@/lib/store/authStore';
 import Link from 'next/link';
 import Image from 'next/image';
 import * as Yup from 'yup';
-import 'izitoast/dist/css/iziToast.min.css';
+// import 'izitoast/dist/css/iziToast.min.css';
 import { AxiosError } from 'axios';
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik';
 import { login } from '@/lib/api/clientApi';
 import iziToast from 'izitoast';
+// import iziToast from 'izitoast';
 
 interface OrderFormValues {
   email: string;
@@ -42,7 +43,6 @@ export default function SignIn() {
   ) => {
     try {
       const user = await login(values);
-    
 
       if (user) {
         setUser(user);
@@ -83,13 +83,10 @@ export default function SignIn() {
               <div className={css.formGroup}>
                 <Field
                   id="email"
-               
                   name="email"
                   className={`${css.input} ${
                     errors.email && touched.email ? css.inputError : ''
                   }`}
-
-
                   placeholder="Пошта"
                 />
                 <ErrorMessage
@@ -102,12 +99,10 @@ export default function SignIn() {
               <div className={css.formGroup}>
                 <Field
                   id="password"
-
                   name="password"
                   className={`${css.input} ${
                     errors.password && touched.password ? css.inputError : ''
                   }`}
-
                   placeholder="Пароль"
                 />
                 <ErrorMessage
@@ -117,7 +112,11 @@ export default function SignIn() {
                 />
               </div>
               <div className={css.actions}>
-                <button type="submit" className={css.submitButton} disabled={isSubmitting}>
+                <button
+                  type="submit"
+                  className={css.submitButton}
+                  disabled={isSubmitting}
+                >
                   Увійти
                 </button>
               </div>

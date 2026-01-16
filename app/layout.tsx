@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+import 'modern-normalize';
 import './globals.css';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 import { lato, comfortaa } from './fonts';
+import { Toaster } from 'react-hot-toast';
 import Sprite from '@/public/img/header/sprite';
 import Toaster from '@/components/Toaster/Toaster';
 import '@/lib/validation/yup';
@@ -20,9 +22,13 @@ export default function RootLayout({
       <body className={`${lato.className} ${comfortaa.className}`}>
         <TanStackProvider>
           <Sprite />
-
           {children}
-          <Toaster />
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              duration: 4000,
+            }}
+          />
         </TanStackProvider>
       </body>
     </html>

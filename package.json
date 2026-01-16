@@ -14,8 +14,9 @@
     "clsx": "^2.1.1",
     "cookie": "^1.1.1",
     "formik": "^2.4.9",
-    "framer-motion": "^12.25.0",
+    "modern-normalize": "^3.0.1",
     "izitoast": "^1.4.0",
+    "framer-motion": "^12.25.0",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/estree": "^1.0.8",
     "@types/node": "^25",
     "@types/react": "^19",
     "@types/react-dom": "^19",
