@@ -13,6 +13,11 @@ export interface UpdateTaskStateRequest {
   checked: boolean;
 }
 
+export interface CreateTaskRequest {
+  title: string;
+  date: string;
+}
+
 export const fetchTasks = async (): Promise<FetchTasksResponse> => {
   const response = await api.get<FetchTasksResponse>('/tasks');
   return response.data;
@@ -36,6 +41,14 @@ export async function fetchWeekClient(
   });
   return data;
 }
+
+// Create POST function, a request to save a task note
+export const createTask = async (
+  task: CreateTaskRequest,
+): Promise<Task> => {
+  const { data } = await api.post<Task>('/tasks', task);
+  return data;
+};
 
 export const login = async (loginData: LoginData) => {
   const { data } = await api.post<User>(`/auth/login`, loginData);
