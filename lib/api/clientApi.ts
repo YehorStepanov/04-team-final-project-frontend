@@ -1,12 +1,9 @@
+import { ApiResponse } from '@/types/axios';
+import { Diary } from '@/types/diary';
 import { Task, TaskStatus } from '@/types/task';
 import { api } from './api';
 import { PregnancyWeek, Week } from '@/types/week';
 import { LoginData, RegistrationData, User } from '@/types/user';
-interface ApiResponse<T> {
-  status: number;
-  message: string;
-  data: T;
-}
 
 export const getCurrentUser = async (): Promise<User> => {
   const response = await api.get<ApiResponse<User>>('/users/current');
@@ -88,8 +85,18 @@ export const createTask = async (
 };
 
 export const login = async (loginData: LoginData) => {
-  const { data } = await api.post<User>(`/auth/login`, loginData);
-  return data;
+  const { data } = await api.post<ApiResponse<User>>(`/auth/login`, loginData);
+  return data.data;
+};
+
+export const fetchDiaries = async () => {
+  const { data } = await api.get<ApiResponse<Diary[]>>(`/diaries`);
+  return data.data;
+};
+
+export const fetchDiaryById = async (id: string) => {
+  const { data } = await api.get<ApiResponse<Diary>>(`/diaries/${id}`);
+  return data.data;
 };
 
 export const register = async (

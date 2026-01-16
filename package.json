@@ -13,6 +13,7 @@
     "axios": "^1.13.2",
     "clsx": "^2.1.1",
     "cookie": "^1.1.1",
+    "date-fns": "^4.1.0",
     "formik": "^2.4.9",
     "modern-normalize": "^3.0.1",
     "izitoast": "^1.4.0",

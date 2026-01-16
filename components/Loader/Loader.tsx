@@ -1,5 +1,12 @@
-import css from "./Loader.module.css";
+import css from './Loader.module.css';
+import clsx from 'clsx';
 
-export default function Loader() {
-  return <p className={css.text}>Loading data, please wait...</p>;
+interface LoaderProps {
+  className?: string;
+}
+
+export default function Loader({ className }: LoaderProps) {
+  return (
+    <p className={clsx(css.text, className)}>Loading data, please wait...</p>
+  );
 }
