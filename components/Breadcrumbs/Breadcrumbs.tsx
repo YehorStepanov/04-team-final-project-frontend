@@ -4,26 +4,30 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import styles from './Breadcrumbs.module.css';
 
-const Breadcrumbs = () => {
+export default function Breadcrumbs() {
   const pathname = usePathname();
 
-  if (pathname === '/login' || pathname === '/register') {
-    return null;
-  }
+  if (pathname === '/login' || pathname === '/register') return null;
 
   const segments = pathname.split('/').filter(Boolean);
 
+  const labelsMap: Record<string, string> = {
+    diary: 'Щоденник',
+    journey: 'Подорож',
+    profile: 'Профіль',
+    
+  };
+
+  const fullSegments = ['Лелека', ...segments.map(s => labelsMap[s] || s)];
+
   return (
     <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
-      {segments.map((segment, index) => {
-        const href = '/' + segments.slice(0, index + 1).join('/');
-        const isLast = index === segments.length - 1;
-
-        const label =
-          segment.charAt(0).toUpperCase() + segment.slice(1);
+      {fullSegments.map((label, index) => {
+        const href = '/' + segments.slice(0, index).join('/'); // перший сегмент "Лелека" → '/'
+        const isLast = index === fullSegments.length - 1;
 
         return (
-          <span key={href}>
+          <span key={index} className={styles.item}>
             {isLast ? (
               <span className={styles.current}>{label}</span>
             ) : (
@@ -31,7 +35,7 @@ const Breadcrumbs = () => {
                 <Link href={href} className={styles.link}>
                   {label}
                 </Link>
-                <span className={styles.separator}> / </span>
+                <span className={styles.separator}>{'>'}</span>
               </>
             )}
           </span>
@@ -39,6 +43,4 @@ const Breadcrumbs = () => {
       })}
     </nav>
   );
-};
-
-export default Breadcrumbs;
+}

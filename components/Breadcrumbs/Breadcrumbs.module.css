@@ -1,58 +1,67 @@
-.breadcrumb {
+.breadcrumbs {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   font-size: 14px;
-  text-align: center;
 
-  display: flex;
-  gap: 0;
-  flex-wrap: nowrap;
-}
-
-.breadcrumb ul {
-  list-style: none;
-  display: flex;
-  padding: 0;
-  margin: 0;
-}
-
-.breadcrumb li {
   display: flex;
   align-items: center;
+  gap: 8px;
+
+  white-space: nowrap;
+  overflow-x: auto;
+
+  padding: 24px 32px;
+  margin-bottom: 16px;
+  margin-top: 64px;
 }
 
-/* Роздільник ">" */
-.breadcrumb li::after {
-  content: '>';
+/* елемент */
+.item {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* посилання */
+.link {
+  color: rgba(0, 0, 0, 1);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* поточний елемент */
+.current {
+  color: rgba(127, 127, 127, 1);
+}
+
+/* роздільник */
+.separator {
   display: flex;
   align-items: center;
   justify-content: center;
 
   width: 24px;
   height: 24px;
-
   margin: 0 8px;
+
   color: rgba(0, 0, 0, 1);
 }
 
-.breadcrumb li:last-child::after {
-  content: '';
-}
-
-/* Посилання */
-.breadcrumb a {
-  color: rgba(0, 0, 0, 1);
-  text-decoration: none;
-}
-
-/* Поточний елемент */
-.breadcrumb span {
-  color: rgba(127, 127, 127, 1);
+/* -------- TABLET -------- */
+@media (min-width: 768px) {
+  .breadcrumbs {
+    padding: 24px 32px;
+  }
 }
 
 
-@media only screen and (min-width: 1440px) {
-  .breadcrumb {
+/* --------  DESKTOP -------- */
+@media (min-width: 1440px) {
+  .breadcrumbs {
     font-size: 14px;
+     
   }
 }

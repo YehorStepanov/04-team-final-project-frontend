@@ -1,16 +1,15 @@
 import Header from '@/components/Header/Header';
 import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs';
 
-export default function MainLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function MainLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Header />
-      <Breadcrumbs />
-      {children}
+
+      <main >
+        <Breadcrumbs />
+         {children}
+      </main>
     </>
   );
 }
