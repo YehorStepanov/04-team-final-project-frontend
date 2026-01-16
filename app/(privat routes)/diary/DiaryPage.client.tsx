@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import css from './DiaryPage.module.css';
-import GreetingBlock from '@/components/Diary/GreetingBlock/GreetingBlock';
 import DiaryList from '@/components/Diary/DiaryList/DiaryList';
 import DiaryEntryDetails from '@/components/Diary/DiaryEntryDetails/DiaryEntryDetails';
 import EmptyMessage from '@/components/Diary/EmptyMessage/EmptyMessage';
@@ -28,7 +27,6 @@ export default function DiaryPageClient() {
 
   return (
     <section className={css.sectionContainer}>
-      <GreetingBlock />
       <div className={css.contentContainer}>
         {!!diaries?.length && (
           <>
