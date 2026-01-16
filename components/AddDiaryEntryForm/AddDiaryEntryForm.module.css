@@ -1,0 +1,180 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  outline: none;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.error {
+  color: #d00000;
+  font-size: 12px;
+}
+
+.status {
+  color: #d00000;
+  font-size: 13px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.primaryBtn {
+  background: #ffd5df;
+}
+
+.secondaryBtn {
+  background: #fff;
+  border-color: #ddd;
+}
+
+/* ===== Dropdown categories ===== */
+
+.dropdownRoot {
+  position: relative;
+}
+
+.dropdownField {
+  width: 100%;
+  min-height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  padding: 8px 12px;
+  background: #fff;
+
+  cursor: pointer;
+}
+
+.dropdownValue {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.placeholder {
+  color: #8a8a8a;
+}
+
+.selectedChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #eee;
+  background: #fafafa;
+  font-size: 13px;
+}
+
+.arrow {
+  font-size: 16px;
+  line-height: 1;
+  transform: rotate(0deg);
+  transition: transform 150ms ease;
+}
+
+.arrowOpen {
+  transform: rotate(180deg);
+}
+
+.dropdownPanel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+
+  z-index: 100;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  max-height: none;
+  overflow-y: hidden;
+
+  overflow-x: hidden;
+
+  background: #f5f5f5;
+
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+
+  padding: 8px;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.dropdownItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 3px 8px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  line-height: 1.2;
+
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.dropdownItem:hover {
+  background: #ececec;
+}
+
+.dropdownItem input {
+  flex-shrink: 0;
+}

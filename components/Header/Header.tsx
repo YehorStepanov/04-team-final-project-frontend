@@ -11,7 +11,7 @@ export default function Header() {
           </li>
           <li>Journey</li>
           <li>
-            <Link href="/diary">Diary</Link>
+            <Link href="/diaryTemporary">Diary</Link>
           </li>
           <li>Profile</li>
           <li>
