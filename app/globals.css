@@ -81,7 +81,8 @@ body {
   --color-scheme-foreground: var(--color-oasis-lighter);
   --color-scheme-accent: var(--color-oasis);
   --color-scheme-foreground-alt: var(--color-oasis-light);
-=======
+}
+
 *,
 *::before,
 *::after {

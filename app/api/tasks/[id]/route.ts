@@ -14,7 +14,7 @@ export async function PATCH(request: Request, { params }: Props) {
     const { id } = await params;
     const body = await request.json();
 
-    const res = await api.patch(`/tasks/${id}`, body, {
+    const res = await api.patch(`/api/tasks/${id}`, body, {
       headers: {
         Cookie: cookieStore.toString(),
       },

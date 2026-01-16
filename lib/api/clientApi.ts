@@ -1,10 +1,7 @@
 import { Task, TaskStatus } from '@/types/task';
 import { api } from './api';
 import { PregnancyWeek, Week } from '@/types/week';
-import { LoginData, User } from '@/types/user';
-import { User, LoginData } from '@/types/user';
-import { PregnancyWeek } from '@/types/week';
-
+import { LoginData, RegistrationData, User } from '@/types/user';
 interface ApiResponse<T> {
   status: number;
   message: string;
@@ -20,22 +17,6 @@ export const updateUser = async (userData: Partial<User>): Promise<User> => {
   const response = await api.patch<ApiResponse<User>>(
     '/users/update',
     userData,
-  );
-  return response.data.data;
-};
-
-export const uploadAvatar = async (file: File): Promise<User> => {
-  const formData = new FormData();
-  formData.append('avatar', file);
-
-  const response = await api.patch<ApiResponse<User>>(
-    '/users/avatar',
-    formData,
-    {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    },
   );
   return response.data.data;
 };
@@ -133,6 +114,7 @@ import type {
   OnboardingResponse,
 } from '@/types/onboarding';
 import { setTheme, getThemeFromGender } from '@/lib/utils/theme';
+import axios from 'axios';
 
 export const uploadAvatar = async (avatarFile: File): Promise<string> => {
   const formData = new FormData();
