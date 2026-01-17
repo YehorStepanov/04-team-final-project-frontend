@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 import { api } from '../api';
 import { cookies } from 'next/headers';
 import { isAxiosError } from 'axios';
@@ -15,6 +15,39 @@ export async function GET() {
     });
 
     return NextResponse.json(res.data, { status: res.status });
+  } catch (error) {
+    if (isAxiosError(error)) {
+      logErrorResponse(error.response?.data);
+      return NextResponse.json(
+        { error: error.message, response: error.response?.data },
+        { status: error.status },
+      );
+    }
+    logErrorResponse({ message: (error as Error).message });
+    return NextResponse.json(
+      { error: 'Internal Server Error' },
+      { status: 500 },
+    );
+  }
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const cookieStore = await cookies();
+
+    const body = await request.json();
+    console.log(body);
+
+    const res = await api.post('/api/tasks', body, {
+      headers: {
+        Cookie: cookieStore.toString(),
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const response = NextResponse.json(res.data, { status: res.status });
+
+    return response;
   } catch (error) {
     if (isAxiosError(error)) {
       logErrorResponse(error.response?.data);
