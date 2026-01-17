@@ -15,11 +15,17 @@ interface FormValues {
   date: string;
 }
 
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
 const validationSchema = Yup.object({
   name: Yup.string()
     .min(3, 'Мінімум 3 символи')
+    .max(96, 'Максимум 96 символів')
     .required('Введіть назву завдання'),
-  date: Yup.string().required('Оберіть дату'),
+  date: Yup.date()
+    .required('Оберіть дату')
+    .min(today, 'Дата не може бути в минулому'),
 });
 
 export default function AddTaskForm({ onSuccess }: AddTaskFormProps) {

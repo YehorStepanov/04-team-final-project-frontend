@@ -18,7 +18,7 @@ export default function JourneyDetails({ data }: { data: PregnancyWeek }) {
 
   const page = 'journeyPage';
 
-  const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(true);
+  const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
 
   function openAddTaskModal(): void {
     setIsAddTaskModalOpen(true);
