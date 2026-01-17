@@ -4,16 +4,27 @@ import BabyTodayCard from '@/components/BabyTodayCard/BabyTodayCard';
 import Loader from '@/components/Loader/Loader';
 import MomTipCard from '@/components/MomTipCard/MomTipCard';
 import StatusBlock from '@/components/StatusBlock/StatusBlock';
-import { fetchWeek } from '@/lib/api/api';
 import { useQuery } from '@tanstack/react-query';
 import css from './DashboardPage.module.css';
 import FeelingCheckCard from '@/components/FeelingCheckCard/FeelingCheckCard';
 import TasksReminderCard from '@/components/TasksReminderCard/TasksReminderCard';
+import {
+  fetchCurrentWeekDashboardClient,
+  fetchWeekDashboardClient,
+} from '@/lib/api/clientApi';
 
-function DashboardPageClient() {
+interface DashboardPageClientProps {
+  isLoggedIn: boolean;
+}
+
+function DashboardPageClient({ isLoggedIn }: DashboardPageClientProps) {
+  const apiFunction = isLoggedIn
+    ? fetchCurrentWeekDashboardClient
+    : fetchWeekDashboardClient;
+
   const { data, isError, isLoading } = useQuery({
     queryKey: ['week'],
-    queryFn: fetchWeek,
+    queryFn: apiFunction,
   });
 
   console.log(data);
