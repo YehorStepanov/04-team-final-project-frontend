@@ -1,0 +1,43 @@
+.cover {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  padding-top: 16px;
+  padding-bottom: 24px;
+  margin-top: auto;
+}
+.avatar {
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 8px;
+  border-radius: 50%;
+  object-fit: cover;
+  width: 40px;
+  height: 40px;
+}
+.name {
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+
+  line-height: 1.6;
+  color: #000;
+}
+.email {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+
+  line-height: 1.6;
+  color: #000;
+}
+@media (min-width: 1440px) {
+  .name {
+    font-size: 14px;
+  }
+  .email {
+    font-size: 14px;
+  }
+}

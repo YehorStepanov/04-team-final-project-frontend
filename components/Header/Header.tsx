@@ -7,7 +7,12 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { clsx } from 'clsx';
 
+import AuthBar from '../AuthBar/AuthBar';
+import UserBar from '@/components/UserBar/UserBar';
+import { useAuthStore } from '@/lib/store/authStore';
+
 export default function Header() {
+  const user = useAuthStore((state) => state.user);
   const pathname = usePathname();
   const [isOpenModal, setIsOpenModal] = useState(false);
 
@@ -15,91 +20,92 @@ export default function Header() {
     <>
       <header className={styles.header}>
         <nav className={styles.navigator_header}>
+          {/* LOGO */}
           <Link className={styles.logo_link} href="/">
             <svg className={styles.logo_header} width="105" height="45">
-              <use href="#icon-logo"></use>
+              <use href="#icon-logo" />
             </svg>
-            </Link>
+          </Link>
+
+          {/* NAV */}
           <ul className={styles.desktop_nav}>
             <li
-              className={clsx(styles.nav_item, {
-                [styles.active]: pathname === '/',
-              })}
+              className={clsx(
+                styles.nav_item,
+                pathname === '/' && styles.active,
+              )}
             >
-              <Link className={styles.nav_link_modal} href="/">
+              <Link className={styles.nav_link} href="/">
                 <svg width="24" height="24">
-                  <use href="#icon-today"></use>
+                  <use href="#icon-today" />
                 </svg>
                 Мій день
               </Link>
             </li>
+
             <li
-              className={clsx(styles.nav_item, {
-                [styles.active]: pathname.startsWith('/journey'),
-              })}
+              className={clsx(
+                styles.nav_item,
+                pathname.startsWith('/journey') && styles.active,
+              )}
             >
-              <Link className={styles.nav_link_modal} href="/journey">
+              <Link className={styles.nav_link} href="/journey">
                 <svg width="24" height="24">
-                  <use href="#icon-conversion_path"></use>
+                  <use href="#icon-conversion_path" />
                 </svg>
                 Подорож
               </Link>
             </li>
+
             <li
-              className={clsx(styles.nav_item, {
-                [styles.active]: pathname.startsWith('/diary'),
-              })}
+              className={clsx(
+                styles.nav_item,
+                pathname.startsWith('/diary') && styles.active,
+              )}
             >
-              <Link className={styles.nav_link_modal} href="/diary">
+              <Link className={styles.nav_link} href="/diary">
                 <svg width="24" height="24">
-                  <use href="#icon-book_2"></use>
+                  <use href="#icon-book_2" />
                 </svg>
                 Щоденник
               </Link>
             </li>
+
             <li
-              className={clsx(styles.nav_item, {
-                [styles.active]: pathname.startsWith('/profile'),
-              })}
+              className={clsx(
+                styles.nav_item,
+                pathname.startsWith('/profile') && styles.active,
+              )}
             >
-              <Link className={styles.nav_link_modal} href="/profile">
+              <Link className={styles.nav_link} href="/profile">
                 <svg width="24" height="24">
-                  <use href="#icon-account_circle"></use>
+                  <use href="#icon-account_circle" />
                 </svg>
                 Профіль
               </Link>
             </li>
-            <li className={clsx(styles.nav_item)}>
-              <Link className={styles.nav_link_modal} href="/sign-up">
-                <svg width="24" height="24">
-                  <use href="#icon-account_circle"></use>
-                </svg>
-                Зареєстуватись
-              </Link>
-            </li>
-            <li className={clsx(styles.nav_item)}>
-              <Link className={styles.nav_link_modal} href="/sign-in">
-                <svg width="24" height="24">
-                  <use href="#icon-account_circle"></use>
-                </svg>
-                Увійти
-              </Link>
-            </li>
           </ul>
+
+          {/* AUTH / USER */}
+          <div className={styles.footer}>
+            {user ? <UserBar /> : <AuthBar />}
+          </div>
+
+          {/* BURGER */}
           <div className={styles.menu_box}>
             <button
-              onClick={() => setIsOpenModal((isOpenModal) => !isOpenModal)}
-              type="button"
+              onClick={() => setIsOpenModal((v) => !v)}
               className={styles.menu_mobile}
-              aria-label="menu button"
+              aria-label="menu"
             >
               <svg width="32" height="32">
-                <use href="#icon-menu"></use>
+                <use href="#icon-menu" />
               </svg>
             </button>
           </div>
         </nav>
       </header>
+
       {isOpenModal && <BurgerMenu onClose={() => setIsOpenModal(false)} />}
     </>
   );
