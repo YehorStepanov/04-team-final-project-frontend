@@ -53,7 +53,7 @@ function DashboardPageClient({ isLoggedIn }: DashboardPageClientProps) {
           <MomTipCard mom={data.mom} />
         </div>
         <div className={css.secondBlock}>
-          <TasksReminderCard />
+          <TasksReminderCard page="dashboardPage" openAddTaskModal={() => {}} />
           <FeelingCheckCard />
         </div>
       </div>

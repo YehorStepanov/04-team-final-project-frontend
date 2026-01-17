@@ -78,7 +78,7 @@ const TasksReminderCard = ({
           onClick={onCreateTaskClick}
         >
           <svg className={css.checkmark} width={24} height={24}>
-            <use href="img/tasksReminderCard/sprite.svg#icon-add_circle" />
+            <use href="/img/tasksReminderCard/sprite.svg#icon-add_circle" />
           </svg>
         </button>
       </div>

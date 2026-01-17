@@ -62,7 +62,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       />
       <span className={css.checkboxContainer} aria-hidden="true">
         <svg className={css.checkmark} width="14" height="11">
-          <use href="img/tasksReminderCard/sprite.svg#icon-check-mark" />
+          <use href="/img/tasksReminderCard/sprite.svg#icon-check-mark" />
         </svg>
       </span>
       {label && <span className={css.labelText}>{label}</span>}
