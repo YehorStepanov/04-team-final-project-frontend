@@ -1,12 +1,20 @@
 .week_selector_container {
   display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  scroll-snap-type: x mandatory;
-  width: 100%;
+  flex-wrap: nowrap;
   max-width: 1114px;
   margin: 0 auto;
+  height: 87px;
+  align-self: flex-end;
+  gap: 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  padding: 0 16px;
+  scrollbar-width: none;
+}
+
+.week_selector_container::-webkit-scrollbar {
+  display: none;
 }
 
 .week_item {
@@ -18,13 +26,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: 1128px;
   border-radius: 32px;
   text-decoration: none;
 
   background: #fff4f6;
   border: 4px solid transparent;
   transition: color 0.3s ease;
-  box-sizing: border-box;
 }
 
 .week_item.selected {
@@ -75,4 +83,45 @@
   border: 4px solid rgba(0, 0, 0, 0.1);
   border-radius: 32px;
   z-index: -1;
+}
+
+@media (min-width: 375px) {
+  .week_selector_container {
+    max-width: 1453px;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}
+
+@media (min-width: 1440px) {
+  .week_selector_container {
+    max-width: 1549px;
+    height: 101px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 0 auto;
+  }
+  .week_item {
+    width: 97px;
+    height: 101px;
+  }
+
+  .week_selector_container:active {
+    cursor: grabbing;
+  }
+
+  .week_selector_container::-webkit-scrollbar {
+    height: 6px;
+    display: block;
+  }
+
+  .week_selector_container::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+  }
+
+  .dragging {
+    cursor: grabbing !important;
+    user-select: none;
+  }
 }

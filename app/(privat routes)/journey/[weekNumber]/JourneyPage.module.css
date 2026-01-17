@@ -1,0 +1,28 @@
+.page {
+  max-width: 375px;
+  margin: 0 auto;
+}
+.page {
+  margin-top: 68px;
+}
+
+@media (min-width: 768px) {
+  .page {
+    margin-left: 312px;
+    max-width: 768px;
+    margin: 0 auto;
+    margin-top: 68px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .page {
+    margin-left: 312px;
+    max-width: 1128px;
+  }
+}
+
+html,
+body {
+  overflow-x: hidden;
+}

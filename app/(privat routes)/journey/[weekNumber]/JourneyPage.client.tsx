@@ -3,8 +3,9 @@
 import { useQuery } from '@tanstack/react-query';
 import { PregnancyWeek } from '@/types/week';
 import WeekSelector from '@/components/WeekSelector/WeekSelector';
-import css from './JourneyClient.module.css';
+import css from './JourneyPage.module.css';
 import { fetchWeekClient } from '@/lib/api/clientApi';
+import Loader from '@/components/Loader/Loader';
 import JourneyDetails from '@/components/JourneyDetails/JourneyDetails';
 
 interface Props {
@@ -15,15 +16,14 @@ function JourneyPageClient({ weekNumber }: Props) {
   const { data, isLoading } = useQuery<PregnancyWeek>({
     queryKey: ['week', weekNumber],
     queryFn: () => fetchWeekClient(weekNumber),
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
   });
-
-  if (isLoading) return <p>Loading...</p>;
-
-  const currentWeek: number = 5; /* тимчасово, треба Zustand */
 
   return (
     <div className={css.page}>
-      <WeekSelector currentWeek={currentWeek} weekNumber={weekNumber} />
+      <WeekSelector weekNumber={weekNumber} />
+      {isLoading && <Loader />}
       {data && <JourneyDetails data={data} />}
     </div>
   );

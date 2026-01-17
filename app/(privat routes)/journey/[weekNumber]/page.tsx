@@ -5,7 +5,7 @@ import {
 } from '@tanstack/react-query';
 
 import { fetchWeekServer } from '@/lib/api/serverApi';
-import JourneyPageClient from './JourneyClient.client';
+import JourneyPageClient from './JourneyPage.client';
 
 type Props = {
   params: Promise<{ weekNumber: string }>;

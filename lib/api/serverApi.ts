@@ -9,8 +9,29 @@ import axios, { AxiosResponse } from 'axios';
 export async function fetchWeekServer(
   weekNumber: number,
 ): Promise<PregnancyWeek> {
-  const { data } = await api.get(`/weeks/${weekNumber}`);
+  const cookieStore = await cookies();
+
+  const { data } = await api.get(`/api/weeks/${weekNumber}`, {
+    headers: {
+      Cookie: cookieStore.toString(),
+    },
+  });
   return data;
+}
+
+export async function fetchCurrentWeekJourneyServer(): Promise<Week | null> {
+  try {
+    const cookieStore = await cookies();
+    const { data } = await api.get<Week>('/api/weeks/current', {
+      headers: {
+        Cookie: cookieStore.toString(),
+      },
+    });
+    return data;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
 }
 
 export async function fetchWeekDashboardServer(): Promise<Week | null> {

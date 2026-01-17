@@ -13,6 +13,9 @@ import {
   fetchWeekDashboardClient,
 } from '@/lib/api/clientApi';
 
+import { useEffect } from 'react';
+import { useJourneyStore } from '@/lib/store/journeyStore';
+
 interface DashboardPageClientProps {
   isLoggedIn: boolean;
 }
@@ -27,7 +30,14 @@ function DashboardPageClient({ isLoggedIn }: DashboardPageClientProps) {
     queryFn: apiFunction,
   });
 
-  console.log(data);
+  const setCurrentWeek = useJourneyStore((s) => s.setCurrentWeek);
+
+  useEffect(() => {
+    if (data?.weekNumber) {
+      setCurrentWeek(data.weekNumber);
+    }
+  }, [data, setCurrentWeek]);
+
   if (isLoading) return <Loader />;
   if (isError || !data) return null;
 
