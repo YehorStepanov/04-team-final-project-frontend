@@ -5,6 +5,7 @@ import css from './JourneyDetails.module.css';
 import clsx from 'clsx';
 import Image from 'next/image';
 import TasksReminderCard from '../TasksReminderCard/TasksReminderCard';
+import AddTaskModal from '../AddTaskModal/AddTaskModal';
 
 const CATEGORY_ICONS: Record<string, string> = {
   Харчування: 'fork_spoon',
@@ -17,7 +18,7 @@ export default function JourneyDetails({ data }: { data: PregnancyWeek }) {
 
   const page = 'journeyPage';
 
-  const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(true);
+  const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
 
   function openAddTaskModal(): void {
     setIsAddTaskModalOpen(true);
@@ -28,7 +29,6 @@ export default function JourneyDetails({ data }: { data: PregnancyWeek }) {
   }
   return (
     <>
-      {/* <section className={css.container}> */}
       <section>
         <div className={clsx(css.journeyContainer, css.container)}>
           <div
@@ -150,6 +150,9 @@ export default function JourneyDetails({ data }: { data: PregnancyWeek }) {
                   openAddTaskModal={openAddTaskModal}
                 />
               </div>
+              {isAddTaskModalOpen && (
+                <AddTaskModal onClose={closeAddTaskModal} />
+              )}
             </div>
           )}
         </div>

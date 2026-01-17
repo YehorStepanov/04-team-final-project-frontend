@@ -29,7 +29,7 @@ export interface UpdateTaskStateRequest {
 }
 
 export interface CreateTaskRequest {
-  title: string;
+  name: string;
   date: string;
 }
 
