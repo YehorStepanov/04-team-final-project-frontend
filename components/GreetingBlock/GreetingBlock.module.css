@@ -1,0 +1,15 @@
+.greeting {
+  font-family: 'Comfortaa', cursive;
+  font-weight: 700;
+  font-size: 24px;     
+  color: rgba(0, 0, 0, 1);
+  text-align: left;
+}
+
+
+
+@media only screen and (min-width: 1440px) {
+  .greeting {
+    font-size: 32px;
+  }
+}
