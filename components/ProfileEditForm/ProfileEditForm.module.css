@@ -168,6 +168,7 @@
 
 .button:hover {
   background-color: var(--color-white);
+  border-bottom: 4px solid var(--opacity-neutral-darkest-15);
 }
 
 .button_save:hover {
