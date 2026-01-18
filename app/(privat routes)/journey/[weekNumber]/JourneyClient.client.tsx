@@ -6,6 +6,8 @@ import WeekSelector from '@/components/WeekSelector/WeekSelector';
 import css from './JourneyClient.module.css';
 import { fetchWeekClient } from '@/lib/api/clientApi';
 import JourneyDetails from '@/components/JourneyDetails/JourneyDetails';
+import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs'; 
+
 
 interface Props {
   weekNumber: number;
@@ -23,6 +25,7 @@ function JourneyPageClient({ weekNumber }: Props) {
 
   return (
     <div className={css.page}>
+      <Breadcrumbs /> 
       <WeekSelector currentWeek={currentWeek} weekNumber={weekNumber} />
       {data && <JourneyDetails data={data} />}
     </div>

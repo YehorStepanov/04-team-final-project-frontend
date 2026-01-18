@@ -1,0 +1,77 @@
+.breadcrumbs {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  white-space: nowrap;
+  overflow-x: auto;
+
+  /* padding: 24px 32px; */
+  margin-bottom: 16px;
+  margin-top: 64px;
+}
+
+
+.breadcrumbs ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 0;
+  flex-wrap: nowrap; 
+}
+
+/* елемент */
+.item {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* посилання */
+.link {
+  color: rgba(0, 0, 0, 1);
+  text-decoration: none;
+}
+
+/* поточний елемент */
+.current {
+  color: rgba(127, 127, 127, 1);
+}
+
+/* роздільник */
+.separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+  margin: 0 8px;
+
+  color: rgba(0, 0, 0, 1);
+}
+
+.separator::after {
+  content: ">"; 
+}
+
+/* -------- TABLET -------- */
+/* @media (min-width: 768px) {
+  .breadcrumbs {
+    padding: 24px 32px;
+  }
+} */
+
+
+/* --------  DESKTOP -------- */
+@media (min-width: 1440px) {
+  .breadcrumbs {
+    font-size: 14px;
+     margin-top: 0;
+  }
+}

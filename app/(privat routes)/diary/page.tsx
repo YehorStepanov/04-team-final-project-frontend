@@ -1,3 +1,4 @@
+
 import { QueryClient } from '@tanstack/react-query';
 import { fetchServerDiaries } from '@/lib/api/serverApi';
 import { HydrationBoundary } from '@tanstack/react-query';
@@ -18,8 +19,10 @@ export default async function DiaryPage() {
     queryFn: () => fetchServerDiaries(),
   });
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <DiaryPageClient />
-    </HydrationBoundary>
+    <>
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <DiaryPageClient />
+      </HydrationBoundary>
+    </>
   );
 }

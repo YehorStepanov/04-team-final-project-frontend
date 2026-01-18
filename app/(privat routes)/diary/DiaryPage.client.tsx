@@ -18,6 +18,8 @@ import {
 } from '@tanstack/react-query';
 import { deleteDiary } from '@/lib/api/clientApi';
 import toast from 'react-hot-toast';
+import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs'; 
+
 
 export default function DiaryPageClient() {
   const queryClient = useQueryClient();
@@ -53,6 +55,7 @@ export default function DiaryPageClient() {
 
   return (
     <section className={css.sectionContainer}>
+      <Breadcrumbs />
       <div className={css.contentContainer}>
         <>
           <DiaryList
