@@ -4,23 +4,25 @@ import {
   UpdateTaskStateRequest,
   updateTaskStatus,
 } from '@/lib/api/clientApi';
+import { User } from '@/types/user';
 import {
   keepPreviousData,
-  QueryClient,
   useMutation,
   useQuery,
+  useQueryClient,
 } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 
-export const useFetchTasks = () => {
+export const useFetchTasks = (user: User | null) => {
   const {
     data: tasksResponse,
     isLoading,
     isSuccess,
     isError,
   } = useQuery<FetchTasksResponse>({
-    queryKey: ['tasks'],
+    queryKey: ['tasks', user?._id],
     queryFn: fetchTasks,
+    enabled: Boolean(user?._id),
     placeholderData: keepPreviousData,
     staleTime: 1000 * 60,
     refetchOnMount: false,
@@ -30,7 +32,9 @@ export const useFetchTasks = () => {
   return { tasksResponse, isLoading, isSuccess, isError };
 };
 
-export const useTaskStatusUpdate = (queryClient: QueryClient) => {
+export const useTaskStatusUpdate = () => {
+  const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: ({ checked, id }: UpdateTaskStateRequest) =>
       updateTaskStatus({ checked, id }),

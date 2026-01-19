@@ -22,7 +22,7 @@ const TasksReminderCard = ({
 }: TasksReminderCardProps) => {
   const router = useRouter();
   const user = useAuthStore((state) => state.user);
-  const { tasksResponse, isLoading, isSuccess, isError } = useFetchTasks();
+  const { tasksResponse, isLoading, isSuccess, isError } = useFetchTasks(user);
 
   const { pastSorted, todaySorted, futureSorted } = useMemo(() => {
     if (!isSuccess || !tasksResponse) {
@@ -58,7 +58,7 @@ const TasksReminderCard = ({
     if (user) {
       openAddTaskModal();
     } else {
-      router.push('/auth/register');
+      router.push('/sign-up');
     }
   };
 

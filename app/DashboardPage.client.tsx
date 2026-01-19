@@ -2,7 +2,7 @@
 
 import BabyTodayCard from '@/components/BabyTodayCard/BabyTodayCard';
 import Loader from '@/components/Loader/Loader';
-import {MomTipCard} from '@/components/MomTipCard/MomTipCard';
+import { MomTipCard } from '@/components/MomTipCard/MomTipCard';
 import StatusBlock from '@/components/StatusBlock/StatusBlock';
 import { useQuery } from '@tanstack/react-query';
 import css from './DashboardPage.module.css';
@@ -13,14 +13,25 @@ import {
   fetchWeekDashboardClient,
 } from '@/lib/api/clientApi';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useJourneyStore } from '@/lib/store/journeyStore';
+import AddTaskModal from '@/components/AddTaskModal/AddTaskModal';
 
 interface DashboardPageClientProps {
   isLoggedIn: boolean;
 }
 
 function DashboardPageClient({ isLoggedIn }: DashboardPageClientProps) {
+  const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
+
+  const openAddTaskModal = () => {
+    setIsAddTaskModalOpen(true);
+  };
+
+  const closeAddTaskModal = () => {
+    setIsAddTaskModalOpen(false);
+  };
+
   const apiFunction = isLoggedIn
     ? fetchCurrentWeekDashboardClient
     : fetchWeekDashboardClient;
@@ -53,8 +64,13 @@ function DashboardPageClient({ isLoggedIn }: DashboardPageClientProps) {
           <MomTipCard mom={data.mom} />
         </div>
         <div className={css.secondBlock}>
-          <TasksReminderCard page="dashboardPage" openAddTaskModal={() => {}} />
+          <TasksReminderCard
+            page="dashboardPage"
+            openAddTaskModal={openAddTaskModal}
+          />
           <FeelingCheckCard />
+
+          {isAddTaskModalOpen && <AddTaskModal onClose={closeAddTaskModal} />}
         </div>
       </div>
     </>

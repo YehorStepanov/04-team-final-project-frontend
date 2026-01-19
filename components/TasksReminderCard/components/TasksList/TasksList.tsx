@@ -4,7 +4,6 @@ import css from '../../TasksReminderCard.module.css';
 import { useState } from 'react';
 import { UpdateTaskStateRequest } from '@/lib/api/clientApi';
 import { useTaskStatusUpdate } from '@/hooks/useTasks';
-import { useQueryClient } from '@tanstack/react-query';
 
 interface TasksListProps {
   tasks: Task[];
@@ -13,8 +12,7 @@ interface TasksListProps {
 }
 
 const TasksList = ({ tasks, title, name }: TasksListProps) => {
-  const queryClient = useQueryClient();
-  const updateTaskMutation = useTaskStatusUpdate(queryClient);
+  const updateTaskMutation = useTaskStatusUpdate();
   const [updatingId, setUpdatingId] = useState<string | null>(null);
 
   const handleChangeStatus = ({ checked, id }: UpdateTaskStateRequest) => {

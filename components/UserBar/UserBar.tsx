@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import css from './UserBar.module.css';
 import { useAuthStore } from '@/lib/store/authStore';
 import { logout } from '@/lib/api/clientApi';
@@ -35,7 +35,6 @@ export default function UserBar() {
 
   return (
     <div className={css.cover}>
-      <Toaster />
       <div className={css.avatarContainer}>
         <Image
           src={avatarSrc}
