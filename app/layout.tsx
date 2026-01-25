@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import 'modern-normalize';
 import './globals.css';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 import { lato, comfortaa } from './fonts';
